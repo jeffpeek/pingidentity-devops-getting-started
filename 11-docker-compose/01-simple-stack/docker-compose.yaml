@@ -53,7 +53,7 @@ services:
     #  - ${HOME}/projects/devops/pingidentity-server-profiles/baseline/pingfederate:/opt/in
 
   pingdirectory:
-    image: ${PING_IDENTITY_DEVOPS_REGISTRY}/pingdirectory:8.3.0.0-edge
+    image: ${PING_IDENTITY_DEVOPS_REGISTRY}/pingdirectory:${PING_IDENTITY_DEVOPS_TAG}
     # You may need to comment this tmpfs line if you run containers on windows
     tmpfs: /run/secrets
     environment:
@@ -75,18 +75,18 @@ services:
     networks:
       - pingnet
     volumes:
-      - ${HOME}/Profiles/volumes/full-stack.pingdirectory:/opt/out
-      - ${HOME}/Profiles/pingidentity-server-profiles/baseline/pingdirectory:/opt/involumes:
+      - ${HOME}/Profiles/volumes/simple-stack.pingdirectory:/opt/out
+      - ${HOME}/Profiles/pingidentity-server-profiles/baseline/pingdirectory:/opt/in:
  
   pingdataconsole:
-    image: ${PING_IDENTITY_DEVOPS_REGISTRY}/pingdataconsole:8.3.0.0-edge
+    image: ${PING_IDENTITY_DEVOPS_REGISTRY}/pingdataconsole:${PING_IDENTITY_DEVOPS_TAG}
     ports:
       - "8443:8443"
     networks:
       - pingnet
 
   pingdelegator:
-    image: ${PING_IDENTITY_DEVOPS_REGISTRY}/pingdelegator:edge
+    image: ${PING_IDENTITY_DEVOPS_REGISTRY}/pingdelegator:${PING_IDENTITY_DEVOPS_TAG}
     # You may need to comment this tmpfs line if you run containers on windows
     tmpfs: /run/secrets
     environment:
