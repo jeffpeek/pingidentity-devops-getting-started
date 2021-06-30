@@ -76,7 +76,7 @@ services:
       - pingnet
     volumes:
       - ${HOME}/Profiles/volumes/simple-stack.pingdirectory:/opt/out
-      - ${HOME}/Profiles/pingidentity-server-profiles/baseline/pingdirectory:/opt/in:
+      - ${HOME}/Profiles/pingidentity-server-profiles/baseline/pingdirectory:/opt/in
  
   pingdataconsole:
     image: ${PING_IDENTITY_DEVOPS_REGISTRY}/pingdataconsole:${PING_IDENTITY_DEVOPS_TAG}
